@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import Production from './pages/Production';
+import Products from './pages/Products';
 import Sales from './pages/Sales';
 import Management from './pages/Management';
 import Employees from './pages/Employees';
@@ -16,6 +17,8 @@ export default function App() {
         return <Dashboard />;
       case 'production':
         return <Production />;
+      case 'products':
+        return <Products />;
       case 'sales':
         return <Sales />;
       case 'management':

@@ -130,3 +130,48 @@ export const companyInfo = {
   services: ['Pembangunan Kapal Baru (Tugboat, Barge, LCT)', 'Perbaikan & Pemeliharaan', 'Docking', 'Sandblasting & Painting', 'Metal Workshop', 'Fresh Water Supply', 'Industrial Gas Production'],
   platform: 'NexusBuild.id (AI & Escrow Account)',
 };
+
+export const products = [
+  {
+    id: 'P01',
+    name: 'Fresh Water Supply',
+    description: 'Mandiri sumber air bersih berkualitas tinggi untuk kebutuhan operasional kapal dan industri.',
+    capacity: '500 m³/hari',
+    category: 'Utility',
+  },
+  {
+    id: 'P02',
+    name: 'Gas Industry Filling Product',
+    description: 'Produksi gas industri mandiri: Oksigen, Acetylene, Argon untuk pengelasan dan pemotongan metal.',
+    capacity: '5+ Jenis Gas',
+    category: 'Industrial',
+  },
+  {
+    id: 'P03',
+    name: 'Fuel HSD Supply Product',
+    description: 'Penyediaan bahan bakar High Speed Diesel (HSD) berkualitas untuk kapal dan kendaraan industri.',
+    capacity: '100,000 Liter',
+    category: 'Energy',
+  },
+  {
+    id: 'P04',
+    name: 'Jetty Facilities',
+    description: 'Fasilitas jetty modern untuk sandar kapal dengan kapasitas besar dan sistem mooring modern.',
+    capacity: '150+ meter',
+    category: 'Infrastructure',
+  },
+  {
+    id: 'P05',
+    name: 'Workshop',
+    description: 'Metal workshop dengan pembubutan hingga 40 meter, mesin CNC modern, dan tenaga ahli berpengalaman.',
+    capacity: '15+ Mesin',
+    category: 'Manufacturing',
+  },
+  {
+    id: 'P06',
+    name: 'Warehouse',
+    description: 'Pergudangan modern dengan sistem inventori terkomputerisasi dan keamanan 24/7.',
+    capacity: '5,000 m²',
+    category: 'Storage',
+  },
+];

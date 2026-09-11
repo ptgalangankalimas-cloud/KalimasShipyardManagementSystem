@@ -78,7 +78,7 @@ export default function Sales() {
             <img 
               src="https://kalimasgroup.com/wp-content/uploads/2026/01/c307756b-17d7-4330-b110-21c5b4e9550c_2-removebg-preview.png" 
               alt="Kalimas Group" 
-              className="w-12 h-12 object-contain rounded-lg bg-white/10 p-0.5 border border-white/10"
+              className="w-12 h-12 object-contain rounded-xl bg-white p-2 shadow-lg shadow-orange-500/20 border border-orange-200/30"
             />
             <div>
               <p className="text-sm font-semibold">Sales Pipeline — Monitored via NexusBuild.id</p>

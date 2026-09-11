@@ -109,7 +109,7 @@ export default function Dashboard() {
                 <img 
                   src="https://kalimasgroup.com/wp-content/uploads/2026/01/c307756b-17d7-4330-b110-21c5b4e9550c_2-removebg-preview.png" 
                   alt="Kalimas Group" 
-                  className="w-20 h-20 object-contain rounded-xl bg-white/10 p-1 backdrop-blur-sm border border-white/10"
+                  className="w-20 h-20 object-contain rounded-xl bg-white p-2 shadow-lg shadow-orange-500/20 border border-orange-200/30"
                 />
                 <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center">
                   <Zap className="w-3 h-3 text-white" />
