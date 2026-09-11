@@ -27,11 +27,15 @@ export default function Employees() {
   };
 
   const deptColors: Record<string, string> = {
+    'Management': 'bg-amber-50 text-amber-700',
     'Production': 'bg-blue-50 text-blue-600',
     'Engineering': 'bg-purple-50 text-purple-600',
-    'Sales': 'bg-amber-50 text-amber-600',
-    'Quality': 'bg-emerald-50 text-emerald-600',
+    'Sales': 'bg-emerald-50 text-emerald-600',
+    'Quality': 'bg-teal-50 text-teal-600',
     'Safety': 'bg-red-50 text-red-600',
+    'Finance': 'bg-indigo-50 text-indigo-600',
+    'Metal Workshop': 'bg-orange-50 text-orange-600',
+    'IT': 'bg-cyan-50 text-cyan-600',
   };
 
   const stats = {

@@ -116,13 +116,16 @@ export default function Production() {
             >
               <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-2">
+                  <div className="flex items-center gap-2 mb-2 flex-wrap">
                     <span className="text-xs font-mono text-gray-400">{project.id}</span>
                     <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${statusColors[project.status]}`}>
                       {project.status}
                     </span>
                     <span className={`text-xs px-2 py-0.5 rounded-full font-medium border ${typeColors[project.type]}`}>
                       {project.type}
+                    </span>
+                    <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-slate-100 text-slate-600 border border-slate-200">
+                      {project.classification}
                     </span>
                   </div>
                   <h4 className="font-semibold text-gray-800">{project.name}</h4>
@@ -199,6 +202,10 @@ export default function Production() {
                   <div>
                     <p className="text-xs text-gray-400 uppercase font-semibold">Location</p>
                     <p className="text-sm text-gray-700 mt-1">{selectedProjectData.dock}</p>
+                  </div>
+                  <div className="col-span-2">
+                    <p className="text-xs text-gray-400 uppercase font-semibold">Classification</p>
+                    <p className="text-sm font-mono text-gray-700 mt-1">{selectedProjectData.classification}</p>
                   </div>
                 </div>
                 

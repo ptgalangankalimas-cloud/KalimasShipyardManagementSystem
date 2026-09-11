@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { 
   DollarSign, FileText, TrendingUp, Users, 
   Search, Plus, Eye, Edit, MoreVertical,
-  ArrowUpRight, Package, Clock
+  ArrowUpRight, Package, Clock, Anchor
 } from 'lucide-react';
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
@@ -41,14 +41,13 @@ export default function Sales() {
   ];
 
   const vesselTypeData = [
-    { type: 'Bulk Carrier', count: salesOrders.filter(o => o.vesselType === 'Bulk Carrier').length },
-    { type: 'Container', count: salesOrders.filter(o => o.vesselType === 'Container Ship').length },
-    { type: 'Tug Boat', count: salesOrders.filter(o => o.vesselType === 'Tug Boat').length },
-    { type: 'Barge', count: salesOrders.filter(o => o.vesselType === 'Barge').length },
-    { type: 'Ferry', count: salesOrders.filter(o => o.vesselType === 'Ferry').length },
-    { type: 'Tanker', count: salesOrders.filter(o => o.vesselType === 'Oil Tanker').length },
-    { type: 'Patrol', count: salesOrders.filter(o => o.vesselType === 'Patrol Boat').length },
-    { type: 'Cargo', count: salesOrders.filter(o => o.vesselType === 'General Cargo').length },
+    { type: 'Tugboat', count: salesOrders.filter(o => o.vesselType.includes('Tugboat')).length },
+    { type: 'Barge', count: salesOrders.filter(o => o.vesselType.includes('Barge')).length },
+    { type: 'LCT', count: salesOrders.filter(o => o.vesselType.includes('LCT')).length },
+    { type: 'Tanker', count: salesOrders.filter(o => o.vesselType.includes('Tanker')).length },
+    { type: 'Bulk', count: salesOrders.filter(o => o.vesselType.includes('Bulk')).length },
+    { type: 'Container', count: salesOrders.filter(o => o.vesselType.includes('Container')).length },
+    { type: 'Ferry', count: salesOrders.filter(o => o.vesselType.includes('Ferry')).length },
   ];
 
   const statusColors: Record<string, string> = {
@@ -68,6 +67,23 @@ export default function Sales() {
 
   return (
     <div className="space-y-6">
+      {/* Platform Banner */}
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl p-4 text-white flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="bg-amber-500/20 p-2 rounded-lg">
+            <FileText className="w-5 h-5 text-amber-400" />
+          </div>
+          <div>
+            <p className="text-sm font-semibold">Sales Pipeline — Monitored via NexusBuild.id</p>
+            <p className="text-xs text-slate-300">AI-powered transparency & Escrow Account for client trust</p>
+          </div>
+        </div>
+        <div className="hidden md:flex items-center gap-2">
+          <span className="text-xs bg-emerald-500/20 text-emerald-300 px-2 py-1 rounded-full">ISO 9001</span>
+          <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded-full">BKI Certified</span>
+        </div>
+      </div>
+
       {/* Sales KPIs */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
@@ -208,6 +224,7 @@ export default function Sales() {
                 <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Order #</th>
                 <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Client</th>
                 <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Vessel</th>
+                <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Class</th>
                 <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Amount</th>
                 <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Status</th>
                 <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Payment</th>
@@ -228,6 +245,9 @@ export default function Sales() {
                   </td>
                   <td className="px-4 py-3">
                     <p className="text-sm text-gray-700">{order.vesselName}</p>
+                  </td>
+                  <td className="px-4 py-3">
+                    <span className="text-xs font-mono text-gray-600 bg-gray-100 px-2 py-0.5 rounded">{order.classification}</span>
                   </td>
                   <td className="px-4 py-3">
                     <p className="text-sm font-semibold text-gray-800">{formatCurrency(order.amount)}</p>

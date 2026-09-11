@@ -1,17 +1,19 @@
 import { 
-  Ship, 
+  Anchor, 
   TrendingUp, 
   DollarSign, 
   Users, 
   Clock, 
   CheckCircle2, 
-  AlertTriangle,
+  Ship,
   ArrowUpRight,
-  ArrowDownRight
+  ArrowDownRight,
+  Shield,
+  Award
 } from 'lucide-react';
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
-  PieChart, Pie, Cell, LineChart, Line, Legend, AreaChart, Area
+  PieChart, Pie, Cell, Line, Legend, AreaChart, Area
 } from 'recharts';
 import { projects, salesOrders, monthlyRevenue, productionByType, dockUtilization } from '../data/mockData';
 
@@ -34,7 +36,7 @@ export default function Dashboard() {
       icon: Ship, 
       color: 'bg-blue-500', 
       bgColor: 'bg-blue-50',
-      change: '+2', 
+      change: '+3', 
       trend: 'up' 
     },
     { 
@@ -43,39 +45,88 @@ export default function Dashboard() {
       icon: DollarSign, 
       color: 'bg-emerald-500', 
       bgColor: 'bg-emerald-50',
-      change: '+15%', 
+      change: '+18%', 
       trend: 'up' 
     },
     { 
-      title: 'Completed Projects', 
-      value: completedProjects.toString(), 
-      icon: CheckCircle2, 
+      title: 'Ships Served', 
+      value: '800+', 
+      icon: Anchor, 
       color: 'bg-purple-500', 
       bgColor: 'bg-purple-50',
-      change: '+1', 
+      change: '+12', 
       trend: 'up' 
     },
     { 
-      title: 'Pending Orders', 
+      title: 'Pipeline Orders', 
       value: pendingOrders.toString(), 
       icon: Clock, 
       color: 'bg-amber-500', 
       bgColor: 'bg-amber-50',
-      change: '-1', 
-      trend: 'down' 
+      change: formatCurrency(salesOrders.filter(o => o.status === 'Quotation' || o.status === 'Negotiation').reduce((s, o) => s + o.amount, 0)), 
+      trend: 'up' 
     },
   ];
 
   const recentActivities = [
-    { text: 'MV Ocean Spirit hull repair reached 72% completion', time: '2 hours ago', type: 'progress' },
-    { text: 'New order received: MT Balikpapan from PT. Nusantara Oil', time: '5 hours ago', type: 'sales' },
-    { text: 'TB-200 Tug Boat keel laying ceremony completed', time: '1 day ago', type: 'production' },
-    { text: 'MV Meratus Express annual survey delivered to client', time: '2 days ago', type: 'delivery' },
-    { text: 'Safety inspection passed for Dock A operations', time: '3 days ago', type: 'safety' },
+    { text: 'Tugboat TB-3500 "MV Kalimas Jaya" hull assembly reached 68%', time: '2 hours ago', type: 'progress' },
+    { text: 'New order: TB-3000 Indo Star from PT. Indo Marine Logistic', time: '5 hours ago', type: 'sales' },
+    { text: 'LCT Mahakam Prima keel laying ceremony completed', time: '1 day ago', type: 'production' },
+    { text: 'MV Meratus Carrier engine overhaul delivered to PT. Meratus Line', time: '2 days ago', type: 'delivery' },
+    { text: 'ISO 9001 surveillance audit passed successfully', time: '3 days ago', type: 'safety' },
+    { text: 'NexusBuild.id platform progress update shared with clients', time: '4 days ago', type: 'platform' },
   ];
 
   return (
     <div className="space-y-6">
+      {/* Welcome Banner */}
+      <div className="bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 rounded-xl p-6 text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full -translate-y-1/2 translate-x-1/4"></div>
+        <div className="absolute bottom-0 left-0 w-32 h-32 bg-amber-500/5 rounded-full translate-y-1/2 -translate-x-1/4"></div>
+        <div className="relative z-10">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <Shield className="w-4 h-4 text-emerald-400" />
+                <span className="text-xs text-emerald-400 font-medium">ISO 9001 Certified Shipyard</span>
+              </div>
+              <h2 className="text-xl font-bold">Kualitas Maritim Tanpa Kompromi</h2>
+              <p className="text-sm text-slate-300 mt-1">
+                Galangan Kalimas — One-Stop Shipyard untuk pembangunan & perbaikan kapal di Balikpapan
+              </p>
+              <div className="flex items-center gap-4 mt-3">
+                <div className="flex items-center gap-1.5">
+                  <Award className="w-3.5 h-3.5 text-amber-400" />
+                  <span className="text-xs text-slate-300">Rating 4.9/5</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Anchor className="w-3.5 h-3.5 text-amber-400" />
+                  <span className="text-xs text-slate-300">800+ Kapal Dilayani</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Ship className="w-3.5 h-3.5 text-amber-400" />
+                  <span className="text-xs text-slate-300">NexusBuild.id Platform</span>
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <div className="bg-white/10 backdrop-blur rounded-lg p-3 text-center">
+                <p className="text-2xl font-bold text-amber-400">{activeProjects}</p>
+                <p className="text-[10px] text-slate-300">Active Projects</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur rounded-lg p-3 text-center">
+                <p className="text-2xl font-bold text-emerald-400">{completedProjects}</p>
+                <p className="text-[10px] text-slate-300">Completed</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur rounded-lg p-3 text-center">
+                <p className="text-2xl font-bold text-blue-400">{projects.length}</p>
+                <p className="text-[10px] text-slate-300">Total Projects</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {kpiCards.map((kpi, index) => {
@@ -112,7 +163,10 @@ export default function Dashboard() {
         {/* Revenue Chart */}
         <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-bold text-gray-800">Monthly Revenue vs Target</h3>
+            <div>
+              <h3 className="font-bold text-gray-800">Monthly Revenue vs Target</h3>
+              <p className="text-xs text-gray-400">Performance tracking 2026</p>
+            </div>
             <span className="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded-full font-medium">2026</span>
           </div>
           <ResponsiveContainer width="100%" height={280}>
@@ -137,7 +191,10 @@ export default function Dashboard() {
         {/* Production by Type */}
         <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-bold text-gray-800">Projects by Type</h3>
+            <div>
+              <h3 className="font-bold text-gray-800">Projects by Service Type</h3>
+              <p className="text-xs text-gray-400">New Build, Repair, Docking, Maintenance</p>
+            </div>
             <span className="text-xs bg-purple-50 text-purple-600 px-2 py-1 rounded-full font-medium">Active</span>
           </div>
           <div className="flex items-center justify-center">
@@ -169,7 +226,10 @@ export default function Dashboard() {
         {/* Dock Utilization */}
         <div className="lg:col-span-2 bg-white rounded-xl p-5 shadow-sm border border-gray-100">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-bold text-gray-800">Dock & Slipway Utilization</h3>
+            <div>
+              <h3 className="font-bold text-gray-800">Facility Utilization</h3>
+              <p className="text-xs text-gray-400">Dock A, Dock B, Slipway 1 & 2</p>
+            </div>
             <span className="text-xs bg-emerald-50 text-emerald-600 px-2 py-1 rounded-full font-medium">Live</span>
           </div>
           <ResponsiveContainer width="100%" height={250}>
@@ -194,6 +254,7 @@ export default function Dashboard() {
                   activity.type === 'sales' ? 'bg-emerald-500' :
                   activity.type === 'production' ? 'bg-purple-500' :
                   activity.type === 'delivery' ? 'bg-amber-500' :
+                  activity.type === 'platform' ? 'bg-cyan-500' :
                   'bg-red-500'
                 }`} />
                 <div>
@@ -208,8 +269,14 @@ export default function Dashboard() {
 
       {/* Active Projects Table */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-        <div className="p-5 border-b border-gray-100">
-          <h3 className="font-bold text-gray-800">Active Projects Overview</h3>
+        <div className="p-5 border-b border-gray-100 flex items-center justify-between">
+          <div>
+            <h3 className="font-bold text-gray-800">Active Projects Overview</h3>
+            <p className="text-xs text-gray-400">Monitored via NexusBuild.id Platform</p>
+          </div>
+          <span className="text-xs bg-amber-50 text-amber-600 px-2 py-1 rounded-full font-medium">
+            {projects.filter(p => p.status === 'In Progress').length} In Progress
+          </span>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full">
@@ -218,6 +285,7 @@ export default function Dashboard() {
                 <th className="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Project</th>
                 <th className="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Client</th>
                 <th className="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Type</th>
+                <th className="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Class</th>
                 <th className="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Progress</th>
                 <th className="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Status</th>
               </tr>
@@ -232,11 +300,15 @@ export default function Dashboard() {
                   <td className="px-5 py-3 text-sm text-gray-600">{project.client}</td>
                   <td className="px-5 py-3">
                     <span className={`text-xs px-2 py-1 rounded-full font-medium ${
-                      project.type === 'Repair' ? 'bg-blue-50 text-blue-600' :
-                      project.type === 'New Build' ? 'bg-emerald-50 text-emerald-600' :
-                      project.type === 'Conversion' ? 'bg-amber-50 text-amber-600' :
-                      'bg-purple-50 text-purple-600'
+                      project.type === 'New Build' ? 'bg-blue-50 text-blue-600' :
+                      project.type === 'Repair' ? 'bg-emerald-50 text-emerald-600' :
+                      project.type === 'Docking' ? 'bg-amber-50 text-amber-600' :
+                      project.type === 'Maintenance' ? 'bg-purple-50 text-purple-600' :
+                      'bg-gray-50 text-gray-600'
                     }`}>{project.type}</span>
+                  </td>
+                  <td className="px-5 py-3">
+                    <span className="text-xs text-gray-600 font-mono">{project.classification}</span>
                   </td>
                   <td className="px-5 py-3">
                     <div className="flex items-center gap-2">

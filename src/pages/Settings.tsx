@@ -1,21 +1,30 @@
 import { 
-  Building2, MapPin, Mail, Globe, Phone, Ship,
-  Save, Shield, Bell, Palette, Database
+  Building2, MapPin, Mail, Globe, Phone, Anchor,
+  Save, Shield, Bell, Palette, Database, Award,
+  CheckCircle2, Users, Wrench, Droplets, Flame
 } from 'lucide-react';
+import { companyInfo, managementTeam } from '../data/mockData';
 
 export default function Settings() {
   return (
-    <div className="space-y-6 max-w-4xl">
+    <div className="space-y-6 max-w-5xl">
       {/* Company Profile */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-        <div className="p-5 border-b border-gray-100 bg-gradient-to-r from-slate-800 to-slate-700">
-          <div className="flex items-center gap-3">
-            <div className="w-14 h-14 bg-amber-500 rounded-xl flex items-center justify-center">
-              <Ship className="w-8 h-8 text-white" />
+        <div className="p-6 border-b border-gray-100 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/10 rounded-full -translate-y-1/2 translate-x-1/4"></div>
+          <div className="relative z-10 flex items-center gap-4">
+            <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl flex items-center justify-center shadow-lg">
+              <Anchor className="w-9 h-9 text-white" />
             </div>
             <div>
-              <h3 className="text-xl font-bold text-white">PT. Galangan Kalimas</h3>
-              <p className="text-sm text-slate-300">Shipyard Management System Configuration</p>
+              <h3 className="text-xl font-bold text-white">Kalimas Group</h3>
+              <p className="text-sm text-amber-400 font-medium">PT. Galangan Kalimas</p>
+              <p className="text-xs text-slate-300 italic mt-0.5">"{companyInfo.tagline}"</p>
+              <div className="flex items-center gap-3 mt-2">
+                <span className="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full font-medium">ISO 9001</span>
+                <span className="text-[10px] bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded-full font-medium">BKI Certified</span>
+                <span className="text-[10px] bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded-full font-medium">NexusBuild.id</span>
+              </div>
             </div>
           </div>
         </div>
@@ -25,18 +34,27 @@ export default function Settings() {
               <label className="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
               <input 
                 type="text" 
-                defaultValue="PT. Galangan Kalimas"
+                defaultValue={companyInfo.name}
                 className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Industry</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Legal Entity</label>
               <input 
                 type="text" 
-                defaultValue="Shipbuilding & Ship Repair"
+                defaultValue={companyInfo.legalName}
                 className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none"
               />
             </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Tagline</label>
+            <input 
+              type="text" 
+              defaultValue={companyInfo.tagline}
+              className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm italic focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none"
+            />
           </div>
           
           <div>
@@ -45,7 +63,7 @@ export default function Settings() {
               Address
             </label>
             <textarea 
-              defaultValue="Jl. Somber Barun No. 112 RT. 040&#10;Kelurahan Margo Mulyo&#10;Kecamatan Balikpapan Barat&#10;Kota Balikpapan, Kalimantan Timur"
+              defaultValue={companyInfo.address}
               rows={3}
               className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none resize-none"
             />
@@ -59,7 +77,7 @@ export default function Settings() {
               </label>
               <input 
                 type="email" 
-                defaultValue="info@kalimasgroup.com"
+                defaultValue={companyInfo.email}
                 className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none"
               />
             </div>
@@ -70,7 +88,7 @@ export default function Settings() {
               </label>
               <input 
                 type="url" 
-                defaultValue="www.kalimasgroup.com"
+                defaultValue={companyInfo.website}
                 className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none"
               />
             </div>
@@ -81,7 +99,7 @@ export default function Settings() {
               </label>
               <input 
                 type="tel" 
-                defaultValue="+62 542 XXXXXX"
+                defaultValue={companyInfo.phone}
                 className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none"
               />
             </div>
@@ -96,44 +114,93 @@ export default function Settings() {
         </div>
       </div>
 
-      {/* Facility Information */}
+      {/* Management Team */}
+      <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+        <h3 className="font-bold text-gray-800 mb-4 flex items-center gap-2">
+          <Users className="w-5 h-5 text-amber-500" />
+          Tim Manajemen
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {managementTeam.map((member, index) => (
+            <div key={index} className="p-4 border border-gray-100 rounded-lg text-center hover:border-amber-200 hover:bg-amber-50/30 transition-all">
+              <div className="w-14 h-14 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center text-white font-bold mx-auto mb-3">
+                {member.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+              </div>
+              <p className="text-sm font-semibold text-gray-800">{member.name}</p>
+              <p className="text-xs text-amber-600 font-medium mt-0.5">{member.position}</p>
+              <p className="text-xs text-gray-400 mt-1">{member.department}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Services & Facilities */}
       <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
         <h3 className="font-bold text-gray-800 mb-4 flex items-center gap-2">
           <Building2 className="w-5 h-5 text-amber-500" />
-          Facility Information
+          Layanan & Fasilitas Galangan
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="p-4 border border-gray-100 rounded-lg">
-            <p className="text-sm font-medium text-gray-700">Dock A</p>
-            <p className="text-xs text-gray-500 mt-1">Capacity: 5,000 DWT | Length: 80m | Width: 18m</p>
-            <div className="mt-2 w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-              <div className="h-full bg-blue-500 rounded-full" style={{ width: '85%' }} />
+          {/* Services */}
+          <div>
+            <h4 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+              <Wrench className="w-4 h-4 text-blue-500" />
+              Layanan Maritim Terpadu
+            </h4>
+            <div className="space-y-2">
+              {companyInfo.services.map((service, index) => (
+                <div key={index} className="flex items-center gap-2 p-2 bg-gray-50 rounded-lg">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                  <span className="text-sm text-gray-700">{service}</span>
+                </div>
+              ))}
             </div>
-            <p className="text-xs text-gray-400 mt-1">Utilization: 85%</p>
           </div>
-          <div className="p-4 border border-gray-100 rounded-lg">
-            <p className="text-sm font-medium text-gray-700">Dock B</p>
-            <p className="text-xs text-gray-500 mt-1">Capacity: 3,000 DWT | Length: 60m | Width: 15m</p>
-            <div className="mt-2 w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-              <div className="h-full bg-blue-500 rounded-full" style={{ width: '72%' }} />
+          {/* Facilities */}
+          <div>
+            <h4 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+              <Building2 className="w-4 h-4 text-purple-500" />
+              Fasilitas Galangan
+            </h4>
+            <div className="space-y-2">
+              {companyInfo.facilities.map((facility, index) => (
+                <div key={index} className="flex items-center gap-2 p-2 bg-gray-50 rounded-lg">
+                  <CheckCircle2 className="w-4 h-4 text-blue-500 flex-shrink-0" />
+                  <span className="text-sm text-gray-700">{facility}</span>
+                </div>
+              ))}
             </div>
-            <p className="text-xs text-gray-400 mt-1">Utilization: 72%</p>
           </div>
-          <div className="p-4 border border-gray-100 rounded-lg">
-            <p className="text-sm font-medium text-gray-700">Dock C</p>
-            <p className="text-xs text-gray-500 mt-1">Capacity: 2,000 DWT | Length: 45m | Width: 12m</p>
-            <div className="mt-2 w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-              <div className="h-full bg-amber-500 rounded-full" style={{ width: '45%' }} />
+        </div>
+      </div>
+
+      {/* Certifications */}
+      <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+        <h3 className="font-bold text-gray-800 mb-4 flex items-center gap-2">
+          <Award className="w-5 h-5 text-amber-500" />
+          Sertifikasi & Klasifikasi
+        </h3>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {companyInfo.certifications.map((cert, index) => (
+            <div key={index} className="p-4 border border-gray-100 rounded-lg text-center bg-gradient-to-b from-white to-gray-50">
+              <Shield className="w-8 h-8 text-amber-500 mx-auto mb-2" />
+              <p className="text-sm font-bold text-gray-800">{cert}</p>
+              <p className="text-xs text-gray-400 mt-0.5">Certified</p>
             </div>
-            <p className="text-xs text-gray-400 mt-1">Utilization: 45%</p>
-          </div>
-          <div className="p-4 border border-gray-100 rounded-lg">
-            <p className="text-sm font-medium text-gray-700">Slipway 1 & 2</p>
-            <p className="text-xs text-gray-500 mt-1">New Build & Conversion | Length: 100m</p>
-            <div className="mt-2 w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-              <div className="h-full bg-emerald-500 rounded-full" style={{ width: '60%' }} />
+          ))}
+        </div>
+        <div className="mt-4 p-4 bg-cyan-50 border border-cyan-100 rounded-lg">
+          <div className="flex items-start gap-3">
+            <div className="bg-cyan-100 p-2 rounded-lg">
+              <Database className="w-5 h-5 text-cyan-600" />
             </div>
-            <p className="text-xs text-gray-400 mt-1">Combined Utilization: 60%</p>
+            <div>
+              <p className="text-sm font-semibold text-cyan-800">Platform NexusBuild.id</p>
+              <p className="text-xs text-cyan-600 mt-0.5">
+                Galangan pertama di Indonesia dengan teknologi AI & Escrow Account. 
+                Memungkinkan monitoring progress, transparansi biaya, dan keamanan dana klien secara real-time.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -159,8 +226,8 @@ export default function Settings() {
             <div className="flex items-center gap-3">
               <Bell className="w-5 h-5 text-amber-500" />
               <div>
-                <p className="text-sm font-medium text-gray-700">Email Notifications</p>
-                <p className="text-xs text-gray-500">Receive alerts for project updates</p>
+                <p className="text-sm font-medium text-gray-700">NexusBuild Notifications</p>
+                <p className="text-xs text-gray-500">Receive alerts for project progress updates</p>
               </div>
             </div>
             <label className="relative inline-flex items-center cursor-pointer">
@@ -200,9 +267,10 @@ export default function Settings() {
       {/* Footer */}
       <div className="text-center py-4">
         <p className="text-xs text-gray-400">
-          PT. Galangan Kalimas - Shipyard Management System v1.0<br/>
-          Jl. Somber Barun No. 112 RT. 040, Kel. Margo Mulyo, Kec. Balikpapan Barat, Kota Balikpapan<br/>
-          Email: info@kalimasgroup.com | Web: www.kalimasgroup.com
+          Kalimas Group — PT. Galangan Kalimas<br/>
+          {companyInfo.address}<br/>
+          {companyInfo.phone} | {companyInfo.email} | {companyInfo.website}<br/>
+          <span className="text-amber-500 font-medium mt-1 inline-block">Kualitas Maritim Tanpa Kompromi</span>
         </p>
       </div>
     </div>

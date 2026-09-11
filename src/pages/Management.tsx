@@ -192,6 +192,27 @@ export default function Management() {
         </div>
       </div>
 
+      {/* NexusBuild Platform */}
+      <div className="bg-gradient-to-r from-cyan-50 to-blue-50 rounded-xl p-5 border border-cyan-100">
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-3">
+            <div className="bg-cyan-100 p-2 rounded-lg">
+              <FileText className="w-5 h-5 text-cyan-600" />
+            </div>
+            <div>
+              <h3 className="font-bold text-cyan-800">NexusBuild.id Platform</h3>
+              <p className="text-xs text-cyan-600">AI-Powered Progress Monitoring & Escrow Account</p>
+            </div>
+          </div>
+          <span className="text-xs bg-cyan-100 text-cyan-700 px-2 py-1 rounded-full font-medium">Active</span>
+        </div>
+        <p className="text-sm text-cyan-700">
+          Galangan Kalimas is the first shipyard in Indonesia utilizing AI technology and Escrow Account system 
+          through the NexusBuild.id platform. This ensures full transparency of scope, progress, and costs — 
+          monitored and controlled directly by vessel owners.
+        </p>
+      </div>
+
       {/* Reports Section */}
       <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
         <div className="flex items-center justify-between mb-4">
