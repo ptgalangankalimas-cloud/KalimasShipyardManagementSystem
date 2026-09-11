@@ -54,9 +54,11 @@ export default function Layout({ children, currentPage, onNavigate }: LayoutProp
         {/* Company Logo */}
         <div className="p-5 border-b border-slate-700/50">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl flex items-center justify-center shadow-lg shadow-amber-500/20">
-              <Anchor className="w-7 h-7 text-white" />
-            </div>
+            <img 
+              src="https://kalimasgroup.com/wp-content/uploads/2026/01/c307756b-17d7-4330-b110-21c5b4e9550c_2-removebg-preview.png" 
+              alt="Kalimas Group Logo" 
+              className="w-14 h-14 object-contain rounded-lg bg-white/10 p-1"
+            />
             <div>
               <h1 className="font-bold text-base leading-tight">Kalimas Group</h1>
               <p className="text-xs text-amber-400 font-medium">Galangan Kalimas</p>
@@ -107,7 +109,11 @@ export default function Layout({ children, currentPage, onNavigate }: LayoutProp
         <div className="p-4 border-t border-slate-700/50">
           <div className="bg-slate-800/70 rounded-lg p-3">
             <div className="flex items-center gap-2 mb-2">
-              <Building2 className="w-3.5 h-3.5 text-amber-400" />
+              <img 
+                src="https://kalimasgroup.com/wp-content/uploads/2026/01/c307756b-17d7-4330-b110-21c5b4e9550c_2-removebg-preview.png" 
+                alt="Kalimas Group" 
+                className="w-8 h-8 object-contain"
+              />
               <span className="text-[10px] font-semibold text-amber-400 uppercase tracking-wider">Company Info</span>
             </div>
             <p className="text-[11px] text-slate-400 leading-relaxed">
@@ -141,6 +147,11 @@ export default function Layout({ children, currentPage, onNavigate }: LayoutProp
             >
               {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
+            <img 
+              src="https://kalimasgroup.com/wp-content/uploads/2026/01/c307756b-17d7-4330-b110-21c5b4e9550c_2-removebg-preview.png" 
+              alt="Kalimas Group" 
+              className="w-10 h-10 object-contain lg:block hidden"
+            />
             <div>
               <h2 className="text-lg font-bold text-gray-800 capitalize">
                 {currentPage === 'dashboard' ? 'Dashboard Overview' : 

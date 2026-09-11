@@ -70,9 +70,11 @@ export default function Sales() {
       {/* Platform Banner */}
       <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl p-4 text-white flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="bg-amber-500/20 p-2 rounded-lg">
-            <FileText className="w-5 h-5 text-amber-400" />
-          </div>
+          <img 
+            src="https://kalimasgroup.com/wp-content/uploads/2026/01/c307756b-17d7-4330-b110-21c5b4e9550c_2-removebg-preview.png" 
+            alt="Kalimas Group" 
+            className="w-12 h-12 object-contain rounded-lg bg-white/10 p-0.5"
+          />
           <div>
             <p className="text-sm font-semibold">Sales Pipeline — Monitored via NexusBuild.id</p>
             <p className="text-xs text-slate-300">AI-powered transparency & Escrow Account for client trust</p>
