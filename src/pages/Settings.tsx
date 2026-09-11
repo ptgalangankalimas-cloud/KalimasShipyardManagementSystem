@@ -13,9 +13,11 @@ export default function Settings() {
         <div className="p-6 border-b border-gray-100 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/10 rounded-full -translate-y-1/2 translate-x-1/4"></div>
           <div className="relative z-10 flex items-center gap-4">
-            <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl flex items-center justify-center shadow-lg">
-              <Anchor className="w-9 h-9 text-white" />
-            </div>
+            <img 
+              src="https://kalimasgroup.com/wp-content/uploads/2026/01/c307756b-17d7-4330-b110-21c5b4e9550c_2-removebg-preview.png" 
+              alt="Kalimas Group Logo" 
+              className="w-20 h-20 object-contain rounded-lg bg-white/10 p-1"
+            />
             <div>
               <h3 className="text-xl font-bold text-white">Kalimas Group</h3>
               <p className="text-sm text-amber-400 font-medium">PT. Galangan Kalimas</p>
@@ -265,7 +267,12 @@ export default function Settings() {
       </div>
 
       {/* Footer */}
-      <div className="text-center py-4">
+      <div className="text-center py-6">
+        <img 
+          src="https://kalimasgroup.com/wp-content/uploads/2026/01/c307756b-17d7-4330-b110-21c5b4e9550c_2-removebg-preview.png" 
+          alt="Kalimas Group Logo" 
+          className="w-24 h-24 object-contain mx-auto mb-3"
+        />
         <p className="text-xs text-gray-400">
           Kalimas Group — PT. Galangan Kalimas<br/>
           {companyInfo.address}<br/>

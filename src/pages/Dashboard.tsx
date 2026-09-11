@@ -83,29 +83,43 @@ export default function Dashboard() {
       <div className="bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 rounded-xl p-6 text-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full -translate-y-1/2 translate-x-1/4"></div>
         <div className="absolute bottom-0 left-0 w-32 h-32 bg-amber-500/5 rounded-full translate-y-1/2 -translate-x-1/4"></div>
+        <div className="absolute top-1/2 right-20 -translate-y-1/2 opacity-10">
+          <img 
+            src="https://kalimasgroup.com/wp-content/uploads/2026/01/c307756b-17d7-4330-b110-21c5b4e9550c_2-removebg-preview.png" 
+            alt="" 
+            className="w-48 h-48 object-contain"
+          />
+        </div>
         <div className="relative z-10">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <Shield className="w-4 h-4 text-emerald-400" />
-                <span className="text-xs text-emerald-400 font-medium">ISO 9001 Certified Shipyard</span>
-              </div>
-              <h2 className="text-xl font-bold">Kualitas Maritim Tanpa Kompromi</h2>
-              <p className="text-sm text-slate-300 mt-1">
-                Galangan Kalimas — One-Stop Shipyard untuk pembangunan & perbaikan kapal di Balikpapan
-              </p>
-              <div className="flex items-center gap-4 mt-3">
-                <div className="flex items-center gap-1.5">
-                  <Award className="w-3.5 h-3.5 text-amber-400" />
-                  <span className="text-xs text-slate-300">Rating 4.9/5</span>
+            <div className="flex items-start gap-4">
+              <img 
+                src="https://kalimasgroup.com/wp-content/uploads/2026/01/c307756b-17d7-4330-b110-21c5b4e9550c_2-removebg-preview.png" 
+                alt="Kalimas Group" 
+                className="w-20 h-20 object-contain rounded-lg bg-white/10 p-1 flex-shrink-0"
+              />
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <Shield className="w-4 h-4 text-emerald-400" />
+                  <span className="text-xs text-emerald-400 font-medium">ISO 9001 Certified Shipyard</span>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <Anchor className="w-3.5 h-3.5 text-amber-400" />
-                  <span className="text-xs text-slate-300">800+ Kapal Dilayani</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <Ship className="w-3.5 h-3.5 text-amber-400" />
-                  <span className="text-xs text-slate-300">NexusBuild.id Platform</span>
+                <h2 className="text-xl font-bold">Kualitas Maritim Tanpa Kompromi</h2>
+                <p className="text-sm text-slate-300 mt-1">
+                  Galangan Kalimas — One-Stop Shipyard untuk pembangunan & perbaikan kapal di Balikpapan
+                </p>
+                <div className="flex items-center gap-4 mt-3">
+                  <div className="flex items-center gap-1.5">
+                    <Award className="w-3.5 h-3.5 text-amber-400" />
+                    <span className="text-xs text-slate-300">Rating 4.9/5</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Anchor className="w-3.5 h-3.5 text-amber-400" />
+                    <span className="text-xs text-slate-300">800+ Kapal Dilayani</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Ship className="w-3.5 h-3.5 text-amber-400" />
+                    <span className="text-xs text-slate-300">NexusBuild.id Platform</span>
+                  </div>
                 </div>
               </div>
             </div>
