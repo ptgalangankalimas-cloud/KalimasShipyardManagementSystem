@@ -12,7 +12,8 @@ import {
   Settings,
   LogOut,
   Bell,
-  Shield
+  Shield,
+  Package
 } from 'lucide-react';
 
 interface LayoutProps {
@@ -24,6 +25,7 @@ interface LayoutProps {
 const navItems = [
   { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { id: 'production', label: 'Production', icon: Factory },
+  { id: 'products', label: 'Products', icon: Package },
   { id: 'sales', label: 'Sales', icon: ShoppingCart },
   { id: 'management', label: 'Management Control', icon: BarChart3 },
   { id: 'employees', label: 'Employees', icon: Users },
@@ -59,7 +61,7 @@ export default function Layout({ children, currentPage, onNavigate }: LayoutProp
               <img 
                 src="https://kalimasgroup.com/wp-content/uploads/2026/01/c307756b-17d7-4330-b110-21c5b4e9550c_2-removebg-preview.png" 
                 alt="Kalimas Group Logo" 
-                className="w-14 h-14 object-contain rounded-lg bg-white/10 p-1"
+                className="w-14 h-14 object-contain rounded-xl bg-white p-2 shadow-lg shadow-orange-500/20 border border-orange-200/30"
               />
               <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-400 rounded-full border-2 border-slate-900 pulse-glow"></div>
             </div>
@@ -121,7 +123,7 @@ export default function Layout({ children, currentPage, onNavigate }: LayoutProp
               <img 
                 src="https://kalimasgroup.com/wp-content/uploads/2026/01/c307756b-17d7-4330-b110-21c5b4e9550c_2-removebg-preview.png" 
                 alt="Kalimas Group" 
-                className="w-8 h-8 object-contain"
+                className="w-8 h-8 object-contain rounded-lg bg-white p-1 shadow-md shadow-orange-500/10 border border-orange-200/30"
               />
               <span className="text-[10px] font-semibold text-orange-400 uppercase tracking-wider">Company Info</span>
             </div>
@@ -159,12 +161,13 @@ export default function Layout({ children, currentPage, onNavigate }: LayoutProp
             <img 
               src="https://kalimasgroup.com/wp-content/uploads/2026/01/c307756b-17d7-4330-b110-21c5b4e9550c_2-removebg-preview.png" 
               alt="Kalimas Group" 
-              className="w-10 h-10 object-contain lg:block hidden"
+              className="w-10 h-10 object-contain lg:block hidden rounded-lg bg-white p-1 shadow-md shadow-orange-500/10 border border-orange-200/30"
             />
             <div>
               <h2 className="text-lg font-bold text-gray-800 capitalize">
                 {currentPage === 'dashboard' ? 'Dashboard Overview' : 
                  currentPage === 'production' ? 'Production Management' :
+                 currentPage === 'products' ? 'Products & Services' :
                  currentPage === 'sales' ? 'Sales Management' :
                  currentPage === 'management' ? 'Management Control' :
                  currentPage === 'employees' ? 'Employee Management' :

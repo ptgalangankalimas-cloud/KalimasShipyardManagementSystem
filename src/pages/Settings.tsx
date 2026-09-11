@@ -18,7 +18,7 @@ export default function Settings() {
             <img 
               src="https://kalimasgroup.com/wp-content/uploads/2026/01/c307756b-17d7-4330-b110-21c5b4e9550c_2-removebg-preview.png" 
               alt="Kalimas Group Logo" 
-              className="w-20 h-20 object-contain rounded-xl bg-white/10 p-1 border border-white/10"
+              className="w-20 h-20 object-contain rounded-xl bg-white p-2 shadow-lg shadow-orange-500/20 border border-orange-200/30"
             />
             <div>
               <h3 className="text-xl font-bold text-white">
@@ -159,6 +159,15 @@ export default function Settings() {
                   <span className="text-sm text-gray-700">{service}</span>
                 </div>
               ))}
+              <div className="pt-2 mt-2 border-t border-orange-200/50">
+                <p className="text-xs font-semibold text-orange-600 mb-2 uppercase tracking-wider">Produk & Supply</p>
+                {['Fresh Water Supply', 'Gas Industry Filling Product', 'Fuel HSD Supply Product', 'Jetty Facilities', 'Workshop', 'Warehouse'].map((product, index) => (
+                  <div key={index} className="flex items-center gap-2 p-2 bg-gradient-to-r from-red-50/50 to-transparent rounded-lg border border-red-100/50">
+                    <CheckCircle2 className="w-4 h-4 text-red-500 flex-shrink-0" />
+                    <span className="text-sm text-gray-700">{product}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
           <div>
@@ -283,7 +292,7 @@ export default function Settings() {
         <img 
           src="https://kalimasgroup.com/wp-content/uploads/2026/01/c307756b-17d7-4330-b110-21c5b4e9550c_2-removebg-preview.png" 
           alt="Kalimas Group Logo" 
-          className="w-24 h-24 object-contain mx-auto mb-3"
+          className="w-24 h-24 object-contain mx-auto mb-3 rounded-xl bg-white p-3 shadow-lg shadow-orange-500/10 border border-orange-200/30"
         />
         <p className="text-xs text-gray-400">
           Kalimas Group — PT. Galangan Kalimas<br/>
