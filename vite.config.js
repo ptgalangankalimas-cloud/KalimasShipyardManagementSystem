@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
+  base: "/KalimasShipyardManagementSystem/",
   plugins: [react(), tailwindcss()],
   server: {
     host: "0.0.0.0",
@@ -11,5 +12,9 @@ export default defineConfig({
     hmr: {
       port: 3000,
     },
+  },
+  build: {
+    outDir: "dist",
+    sourcemap: false,
   },
 });
